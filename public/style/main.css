@@ -1,0 +1,68 @@
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #e5e5ee;
+}
+
+.header_h1 {
+    text-align: center;
+    margin: 0;
+    color: darkblue;
+}
+
+.header_center {
+    text-align: center;
+}
+
+.header_menu {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_left, .header_right {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.user-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.user-form .text {
+    height: 30px;
+    width: 500px;
+    margin-bottom: 30px;
+}
+
+.user-form .checkbox {
+    margin-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+}
+
+.link {
+    background-color: #7bf;
+    height: 30px;
+    min-width: 120px;
+    margin: 10px auto 30px;
+    line-height: 30px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #7bf, #59e);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+}
+
+.secondMenu a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header_left {
+    color: #00f;
+}
