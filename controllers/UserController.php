@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\engine\Render;
 use app\models\Users;
+use app\models\Session;
 use app\engine\VarDump;
 
 /**
@@ -41,9 +42,9 @@ class UserController extends Controller
                 $_SESSION['login'] = $user->login; //записывает в сессию логин пользователя из базы
                 if (isset($_POST['save'])) { //проверка выбран ли чек-бокс "запомнить"
                     $hash = uniqid(rand(), true); //генерирование произвольного значения
-                    $user->hash = $hash; //присваиваем свойству $hash объекта $user новое значение $hash
-                    $user->save(); //обновляем объект в таблице (метод save() или сохраняет или обновляет)
-                    setcookie("hash", $hash, time() + 3600, "/"); //запишем хеш в cookie
+                    $session = new Session($user->id, $hash); //создаем объект Session для сохранения в базе данных
+                    $session->save(); //добавляем в базу сгенерированный хеш для этого пользователя 
+                    setcookie("hash", $hash, time() + 2500000, "/"); //запишем хеш в cookie
                 }
             }
         }
@@ -54,8 +55,11 @@ class UserController extends Controller
      * Метод реализует разлогинивание
      */
     public function actionLogout() {
+        if (isset($_COOKIE['hash'])) {
+            Session::deleteByHash($_COOKIE['hash']);
+            setcookie("hash", null, -1, "/");
+        }
         unset($_SESSION['login']);
-        setcookie("hash", null, -1, "/");
         header("Location: /");
     }
 

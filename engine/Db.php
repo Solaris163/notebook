@@ -18,9 +18,9 @@ class Db
     private $config = [
         'driver' => 'mysql',
         'host' => 'localhost',
-        'login' => 'root',
-        'password' => '',
-        'database' => 'notebook',
+        'login' => DB_LOGIN,
+        'password' => DB_RASSWORD,
+        'database' => DB_NAME,
         'charset' => 'utf8',
     ];
 
