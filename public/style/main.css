@@ -58,7 +58,7 @@
     border-radius: 3px;
 }
 
-.secondMenu a {
+.secondMenu a, .no-decoration {
     text-decoration: none;
     color: #000;
 }

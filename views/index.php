@@ -6,7 +6,7 @@
     <a href="/"><div class="link">Все</div></a>&nbsp
     <?php foreach ($categoryes as $category): ?>
     
-    <a href="/show/index/?category_id=<?=$category['id']?>"><div class="link"><?=$category['name']?></div></a>&nbsp
+    <a href="/show/index/?category_id=<?=$category['id'];?>"><div class="link"><?=$category['name'];?></div></a>&nbsp
 
     <?php endforeach; ?>
 </div>
@@ -21,14 +21,14 @@
 <br>
 
 <?php foreach ($content as $message): ?>
-
-<div>
-    <?php $date = date("d-m-Y", strtotime($message['date'])); ?>
-    <span style="color: #822;"> <?=$date;?> </span> 
-    <!-- <?=$message['category'];?><br> -->
-    <?=$message['content'];?><br><br>
-</div>
-
+<a href="/message/index/?id=<?=$message['id'];?>" class="no-decoration">
+    <div>
+        <?php $date = date("d-m-Y", strtotime($message['date'])); ?>
+        <span style="color: #822;"> <?=$date;?> </span> 
+        <!-- <?=$message['category'];?><br> -->
+        <?=$message['content'];?><br><br>
+    </div>
+</a>
 <?php endforeach; ?>
 
 <?php else: ?>

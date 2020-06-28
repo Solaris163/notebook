@@ -114,6 +114,15 @@ class Db
         return $pdoStatement->fetch();
     }
 
+    /**
+     * Метод подготавливает и выполняет запрос к базе данных с получением данных из одной строки таблицы
+     * @param $sql
+     * @param array $params
+     */
+    public function queryOneRow($sql, $params) {
+        return $this->query($sql, $params)->fetch();
+    }
+
     public function getLastId() {
         return $this->connection->lastInsertId();
     }

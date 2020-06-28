@@ -23,12 +23,14 @@ class Message extends Model
     (
         $category_id = null,
         $content = null,
-        $date = null
+        $date = null,
+        $id = null
     )
     {
         $this->category_id = $category_id;
         $this->content = $content;
         $this->date = $date;
+        $this->id = $id;
     }
 
     /**
@@ -41,6 +43,7 @@ class Message extends Model
 
     public function getProperties() {
         return [
+            'id'=>$this->id,
             'category_id'=>$this->category_id,
             'content'=>$this->content,
             'date'=>$this->date,

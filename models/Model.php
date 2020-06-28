@@ -12,6 +12,12 @@ abstract class Model
         return Db::getInstance()->queryObject($sql, [':id'=>$id], static::class);
     }
 
+    public static function getOneRow($id) { //возвращает одну строку из таблицы по id
+        $tableName = static::getTableName();
+        $sql = "SELECT * FROM {$tableName} WHERE id = :id";
+        return Db::getInstance()->queryOneRow($sql, [':id'=>$id]);
+    }
+
     public static function getAll() {
         $tableName = static::getTableName();
         $sql = "SELECT * FROM {$tableName}";
@@ -36,7 +42,7 @@ abstract class Model
 
         $sql = "INSERT INTO {$tableName} ({$fields}) values ({$values})";
         //VarDump::varDump($sql);
-        $bindArr = [];//массив вида [':id'=>$id], для биндирования значений в sql запросе (если я правильноо выразился).
+        $bindArr = [];//массив вида [':id'=>$id], для биндирования значений в sql запросе
         foreach (array_keys($propertiesArr) as $key) {
             $bindArr[":{$key}"] = $propertiesArr[$key];
         }
